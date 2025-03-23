@@ -1,20 +1,30 @@
 # MCP Database Server
 
-A Model Context Protocol (MCP) server implementation for MongoDB that allows Large Language Models (LLMs) to interact with MongoDB databases through natural language.
+A Model Context Protocol (MCP) server implementation that allows Large Language Models (LLMs) to interact with various databases through natural language. Currently supports MongoDB, with plans to support:
+
+- PostgreSQL
+- CockroachDB
+- Redis
+- And more...
 
 ## Features
 
-- MongoDB collection operations:
+- Database operations through natural language
+- Currently supports MongoDB with features:
   - List all collections
   - Query documents with filtering and projection
   - Insert documents
   - Delete documents
   - Aggregate pipeline operations
+- Future support for other databases:
+  - PostgreSQL: SQL queries, table operations
+  - CockroachDB: Distributed SQL operations
+  - Redis: Key-value operations, caching
 
 ## Prerequisites
 
 - Node.js v20.12.2 or higher
-- MongoDB database (local or Atlas)
+- Database (currently MongoDB, other databases coming soon)
 - Claude Desktop Application
 
 ## Installation
@@ -40,7 +50,7 @@ npm run build
 
 ## Configuration
 
-To get started, you need to configure the MongoDB connection in your Claude Desktop configuration file:
+To get started, you need to configure your database connection in your Claude Desktop configuration file:
 
 ### MacOS
 
@@ -72,9 +82,49 @@ Add the following configuration to your `claude_desktop_config.json`:
 
 Replace:
 
-- `/path/to/node` with your Node.js executable path
+- `/path/to/node` with your Node.js executable path or just use `node`
 - `/path/to/mcp-database` with the absolute path to this repository
 - `your-mongodb-connection-string` with your MongoDB connection URL
+
+## Usage Examples
+
+### MongoDB Examples
+
+1. List all collections in your database:
+
+```
+Can you show me all the collections in my database?
+```
+
+2. Get specific records from a collection:
+
+```
+Give me 2 records from the chargers collection
+```
+
+3. Query with filters:
+
+```
+Show me all documents in the users collection where status is active
+```
+
+4. Insert a document:
+
+```
+Add a new user to the users collection with name John and email john@example.com
+```
+
+5. Delete a document:
+
+```
+Remove the user with email john@example.com from the users collection
+```
+
+6. Aggregate data:
+
+```
+Show me the total count of users by status in the users collection
+```
 
 ## Available Tools
 
@@ -113,11 +163,38 @@ Executes an aggregation pipeline:
 - `pipeline`: Array of aggregation stages
 - `options`: Optional aggregation options
 
+## Future Database Support
+
+### PostgreSQL
+
+- SQL query execution
+- Table operations
+- Schema management
+- Transaction support
+
+### CockroachDB
+
+- Distributed SQL operations
+- Multi-region support
+- Transaction management
+- Schema operations
+
+### Redis
+
+- Key-value operations
+- Caching mechanisms
+- Pub/sub operations
+- Data structure operations
+
 ## Security
 
-- Never commit your MongoDB connection string to version control
+- Never commit your database connection strings to version control
 - Use environment variables for sensitive information
-- Follow MongoDB's security best practices
+- Follow database-specific security best practices
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
